@@ -1,0 +1,424 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TẢI HACK MỚI NHẤT - KIÊN DATA</title>
+    
+    <!-- Tailwind CSS for rapid responsive layout -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Google Fonts for Hacker/Tech aesthetic -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&family=Teko:wght@400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+        :root {
+            --bg-color: #050505;
+            --neon-green: #0f0;
+            --neon-green-dim: rgba(0, 255, 0, 0.2);
+            --neon-red: #f00;
+            --neon-red-dim: rgba(255, 0, 0, 0.2);
+            --panel-bg: #0a0a0a;
+            --border-color: #222;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: #fff;
+            font-family: 'Share Tech Mono', monospace;
+            background-image: 
+                linear-gradient(rgba(0, 255, 0, 0.03) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(0, 255, 0, 0.03) 1px, transparent 1px);
+            background-size: 30px 30px;
+            overflow-x: hidden;
+            position: relative;
+        }
+
+        /* Scanline Overlay */
+        body::after {
+            content: "";
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.25) 50%), linear-gradient(90deg, rgba(255, 0, 0, 0.06), rgba(0, 255, 0, 0.02), rgba(0, 0, 255, 0.06));
+            background-size: 100% 4px, 3px 100%;
+            pointer-events: none;
+            z-index: 50;
+        }
+
+        /* Glitch Title Effect */
+        .glitch-wrapper {
+            position: relative;
+        }
+        .glitch {
+            font-family: 'Teko', sans-serif;
+            font-size: 4.5rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            position: relative;
+            color: #fff;
+            text-shadow: 0 0 10px rgba(255,255,255,0.3);
+            letter-spacing: 2px;
+        }
+        .glitch::before, .glitch::after {
+            content: attr(data-text);
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: var(--bg-color);
+        }
+        .glitch::before {
+            left: 2px;
+            text-shadow: -2px 0 var(--neon-red);
+            clip: rect(24px, 550px, 90px, 0);
+            animation: glitch-anim 3s infinite linear alternate-reverse;
+        }
+        .glitch::after {
+            left: -2px;
+            text-shadow: -2px 0 var(--neon-green);
+            clip: rect(85px, 550px, 140px, 0);
+            animation: glitch-anim 2.5s infinite linear alternate-reverse;
+        }
+
+        @keyframes glitch-anim {
+            0% { clip: rect(10px, 9999px, 32px, 0); }
+            20% { clip: rect(65px, 9999px, 98px, 0); }
+            40% { clip: rect(12px, 9999px, 14px, 0); }
+            60% { clip: rect(89px, 9999px, 45px, 0); }
+            80% { clip: rect(2px, 9999px, 80px, 0); }
+            100% { clip: rect(45px, 9999px, 12px, 0); }
+        }
+
+        /* Card Styles */
+        .hack-card {
+            background-color: var(--panel-bg);
+            border: 1px solid var(--border-color);
+            position: relative;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.5);
+        }
+        
+        .hack-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 3px;
+            background: var(--border-color);
+            transition: all 0.3s ease;
+        }
+
+        .hack-card:hover {
+            border-color: var(--neon-green);
+            box-shadow: 0 0 15px var(--neon-green-dim), inset 0 0 20px rgba(0,255,0,0.05);
+            transform: translateY(-5px);
+        }
+
+        .hack-card:hover::before {
+            background: var(--neon-green);
+            box-shadow: 0 0 10px var(--neon-green);
+        }
+
+        /* Neon Buttons */
+        .btn-neon {
+            position: relative;
+            display: inline-flex;
+            justify-content: center;
+            align-items: center;
+            padding: 0.75rem 1rem;
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-size: 0.85rem;
+            transition: all 0.3s ease;
+            background: transparent;
+            z-index: 1;
+            overflow: hidden;
+            cursor: pointer;
+        }
+
+        .btn-neon::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 10%;
+            height: 100%;
+            background: rgba(255,255,255,0.1);
+            transition: all 0.3s ease;
+            z-index: -1;
+            transform: skewX(-20deg) translateX(-150%);
+        }
+
+        .btn-neon:hover::before {
+            width: 150%;
+            transform: skewX(-20deg) translateX(0);
+        }
+
+        /* Green Download Button */
+        .btn-green {
+            border: 1px solid var(--neon-green);
+            color: var(--neon-green);
+            text-shadow: 0 0 5px var(--neon-green);
+            box-shadow: 0 0 5px var(--neon-green-dim), inset 0 0 5px var(--neon-green-dim);
+        }
+        .btn-green:hover {
+            background-color: var(--neon-green);
+            color: #000;
+            box-shadow: 0 0 15px var(--neon-green), inset 0 0 10px rgba(255,255,255,0.5);
+            text-shadow: none;
+        }
+
+        /* Red Get Key Button */
+        .btn-red {
+            border: 1px solid var(--neon-red);
+            color: var(--neon-red);
+            text-shadow: 0 0 5px var(--neon-red);
+            box-shadow: 0 0 5px var(--neon-red-dim), inset 0 0 5px var(--neon-red-dim);
+        }
+        .btn-red:hover {
+            background-color: var(--neon-red);
+            color: #000;
+            box-shadow: 0 0 15px var(--neon-red), inset 0 0 10px rgba(255,255,255,0.5);
+            text-shadow: none;
+        }
+        
+        /* Terminal Text Effect */
+        .typewriter {
+            overflow: hidden;
+            border-right: .15em solid var(--neon-green);
+            white-space: nowrap;
+            margin: 0 auto;
+            letter-spacing: .1em;
+            animation: typing 3.5s steps(40, end), blink-caret .75s step-end infinite;
+        }
+
+        @keyframes typing {
+            from { width: 0 }
+            to { width: 100% }
+        }
+
+        @keyframes blink-caret {
+            from, to { border-color: transparent }
+            50% { border-color: var(--neon-green); }
+        }
+        
+        /* Mod Badges */
+        .badge {
+            font-size: 0.7rem;
+            padding: 0.2rem 0.5rem;
+            border-radius: 2px;
+            letter-spacing: 0.5px;
+            background: #1a1a1a;
+            border: 1px solid #333;
+        }
+    </style>
+</head>
+<body class="antialiased min-h-screen flex flex-col">
+
+    <!-- THANH HEADER MẠNG XÃ HỘI NẰM Ở TRÊN CÙNG -->
+    <nav class="w-full bg-[#0a0a0a]/90 border-b border-gray-800/50 py-3 px-4 sm:px-6 flex justify-between items-center sticky top-0 z-50 backdrop-blur-md">
+        <!-- Logo / Tên Web -->
+        <a href="#" class="text-2xl font-black text-white tracking-widest uppercase hover:opacity-80 transition" style="text-decoration: none;">
+            <span class="text-green-500">KIÊN</span> DATA
+        </a>
+        
+        <!-- Mạng xã hội (Facebook, Zalo, YouTube, Telegram) -->
+        <div class="flex items-center gap-4 sm:gap-6">
+            <!-- Facebook -->
+            <a href="https://www.facebook.com/YTB.KienData/" target="_blank" class="text-gray-400 hover:text-blue-500 text-xl sm:text-2xl transition hover:-translate-y-1 hover:drop-shadow-[0_0_10px_rgba(59,130,246,0.8)]" title="Facebook">
+                <i class="fa-brands fa-facebook"></i>
+            </a>
+
+            <!-- Zalo -->
+            <a href="https://zalo.me/0977284054" target="_blank" class="text-gray-400 hover:text-blue-400 transition hover:-translate-y-1 hover:drop-shadow-[0_0_10px_rgba(59,130,246,0.8)] flex items-center" title="Zalo">
+                <span class="font-sans font-black text-[1.1rem] sm:text-[1.3rem] tracking-tighter">Zalo</span>
+            </a>
+
+            <!-- YouTube -->
+            <a href="https://www.youtube.com/@X.Celestials/videos" target="_blank" class="text-gray-400 hover:text-red-500 text-xl sm:text-2xl transition hover:-translate-y-1 hover:drop-shadow-[0_0_10px_rgba(239,68,68,0.8)]" title="YouTube">
+                <i class="fa-brands fa-youtube"></i>
+            </a>
+
+            <!-- Telegram -->
+            <a href="https://t.me/Tasenu" target="_blank" class="text-gray-400 hover:text-blue-400 text-xl sm:text-2xl transition hover:-translate-y-1 hover:drop-shadow-[0_0_10px_rgba(96,165,250,0.8)]" title="Telegram">
+                <i class="fa-brands fa-telegram"></i>
+            </a>
+        </div>
+    </nav>
+
+    <header class="pt-10 pb-8 px-4 text-center relative z-10">
+        <!-- Sponsor/System Warning -->
+        <div class="inline-block mb-4 px-4 py-1 border border-green-500/30 bg-green-500/5 rounded-sm">
+            <span class="text-green-500 text-sm md:text-base font-bold flex items-center gap-2">
+                <i class="fa-solid fa-shield-halved"></i>
+                MUA AIM HACK LIÊN HỆ ZALO 0977284054
+            </span>
+        </div>
+
+        <!-- Main Title -->
+        <div class="glitch-wrapper mb-2">
+            <h1 class="glitch mx-auto leading-none" data-text="TẢI HACK MỚI NHẤT">TẢI HACK MỚI NHẤT</h1>
+        </div>
+
+        <!-- Subtitles / Sponsors -->
+        <div class="mt-6 flex flex-col md:flex-row justify-center items-center gap-2 md:gap-6 text-lg md:text-xl font-bold">
+            <div class="text-green-400 drop-shadow-[0_0_5px_rgba(0,255,0,0.8)] flex items-center gap-2">
+                <i class="fa-solid fa-crown text-yellow-500"></i>
+                KIÊN DATA - TRÙM PROXY VN
+            </div>
+            <span class="hidden md:block text-gray-600">|</span>
+            <div class="text-red-500 drop-shadow-[0_0_5px_rgba(255,0,0,0.8)] flex items-center gap-2">
+                <i class="fa-solid fa-fire text-orange-500"></i>
+                UY TÍN TẠO NÊN CHẤT LƯỢNG
+            </div>
+        </div>
+        
+        <div class="mt-8 max-w-xl mx-auto inline-block">
+            <p class="typewriter text-gray-400 text-sm md:text-base">
+                > Chúc anh em chơi game vui vẻ
+            </p>
+        </div>
+    </header>
+
+    <main class="flex-grow container mx-auto px-4 pb-20 relative z-10 max-w-6xl">
+        
+        <!-- Category Filter (Visual Only) -->
+        <div class="flex justify-center gap-4 mb-10 text-sm">
+            <button class="px-4 py-1 border border-green-500 text-green-500 bg-green-500/10 hover:bg-green-500 hover:text-black transition">ALL</button>
+        </div>
+
+        <!-- Grid Container -->
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
+
+            <!-- Card 1 -->
+            <div class="hack-card p-6 rounded flex flex-col h-full">
+                <div class="flex justify-between items-start mb-4">
+                    <h2 class="text-xl font-bold text-white leading-tight">Proxy No Key Antiban</h2>
+                    <span class="badge text-green-400 border-green-400/50">v2.4</span>
+                </div>
+                <p class="text-gray-400 text-sm mb-6 flex-grow">
+                    Hệ thống bypass anti-cheat mạnh mẽ nhất. Bảo vệ tài khoản khỏi ban 10 năm. 100% an toàn và ổn định.
+                </p>
+                <div class="space-y-3">
+                    <div class="flex items-center text-xs text-gray-500 mb-3 gap-4">
+                        <span><i class="fa-solid fa-download mr-1"></i> 14.2k</span>
+                        <span><i class="fa-solid fa-clock mr-1"></i> Updated 2h ago</span>
+                    </div>
+                    <div class="flex flex-col sm:flex-row gap-3">
+                        <a href="https://link4m.org/FgKH8" target="_blank" class="btn-neon btn-green flex-1 flex items-center justify-center cursor-pointer text-center" style="text-decoration: none;">
+                            <i class="fa-solid fa-cloud-arrow-down mr-2"></i> TẢI NGAY
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Card 2 -->
+            <div class="hack-card p-6 rounded flex flex-col h-full">
+                <div class="flex justify-between items-start mb-4">
+                    <h2 class="text-xl font-bold text-white leading-tight">Data Aim Cổ Máy Xiaomi</h2>
+                    <span class="badge text-yellow-400 border-yellow-400/50">OB55</span>
+                </div>
+                <p class="text-gray-400 text-sm mb-6 flex-grow">
+                    Data aim cổ cực vip, hỗ trợ leo rank, bắn phòng cực bá. Chấp Tố, Antiban siêu cấp vip
+                </p>
+                <div class="space-y-3">
+                    <div class="flex items-center text-xs text-gray-500 mb-3 gap-4">
+                        <span><i class="fa-solid fa-download mr-1"></i> 89.1k</span>
+                        <span><i class="fa-solid fa-clock mr-1"></i> Updated 5h ago</span>
+                    </div>
+                    <div class="flex flex-col sm:flex-row gap-3">
+                        <a href="https://link4m.org/vkt24NH3" target="_blank" class="btn-neon btn-green flex-1 flex items-center justify-center cursor-pointer text-center" style="text-decoration: none;">
+                            <i class="fa-solid fa-cloud-arrow-down mr-2"></i> TẢI NGAY
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Card 3 -->
+            <div class="hack-card p-6 rounded flex flex-col h-full">
+                <div class="flex justify-between items-start mb-4">
+                    <h2 class="text-xl font-bold text-white leading-tight">Proxy Định Vị, Aim Lag</h2>
+                    <span class="badge text-red-400 border-red-400/50">VIP</span>
+                </div>
+                <p class="text-gray-400 text-sm mb-6 flex-grow">
+                    Định vị, aim lag, freeze tối thượng, chuyên bắn tc, tỉ lệ antiban cao
+                </p>
+                <div class="space-y-3">
+                    <div class="flex items-center text-xs text-gray-500 mb-3 gap-4">
+                        <span><i class="fa-solid fa-download mr-1"></i> 112k</span>
+                        <span><i class="fa-solid fa-clock mr-1"></i> Updated 1d ago</span>
+                    </div>
+                    <div class="flex flex-col sm:flex-row gap-3">
+                        <a href="https://link4m.net/Bb3hXBp0" target="_blank" class="btn-neon btn-green flex-1 flex items-center justify-center cursor-pointer text-center" style="text-decoration: none;">
+                            <i class="fa-solid fa-cloud-arrow-down mr-2"></i> TẢI NGAY
+                        </a>
+                        <a href="https://link4sub.com/notes/omOi" target="_blank" class="btn-neon btn-red flex-1 flex items-center justify-center cursor-pointer text-center" style="text-decoration: none;">
+                            <i class="fa-solid fa-cloud-arrow-down mr-2"></i> LẤY KEY
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer class="border-t border-gray-800 bg-[#050505] py-6 text-center text-sm text-gray-500 relative z-10 mt-auto">
+        <p class="mb-2">© 2026 HACK DIRECTORY | Coded for KIÊN DATA</p>
+        <p class="text-xs">Disclaimer: This is a simulation interface. Use mods responsibly.</p>
+    </footer>
+
+    <!-- Custom Message Box to avoid default alert() -->
+    <div id="msg-box" class="fixed top-0 left-0 w-full h-full bg-black/80 flex items-center justify-center z-[100] opacity-0 pointer-events-none transition-opacity duration-300 backdrop-blur-sm">
+        <div class="bg-[#0a0a0a] border-2 border-green-500 p-8 rounded-md max-w-md w-11/12 text-center shadow-[0_0_30px_rgba(0,255,0,0.2)] transform scale-95 transition-transform duration-300" id="msg-content">
+            <i class="fa-solid fa-terminal text-4xl text-green-500 mb-4 animate-pulse"></i>
+            <h3 class="text-xl font-bold text-white mb-2" id="msg-title">SYSTEM STATUS</h3>
+            <p class="text-green-400 mb-6 font-mono text-sm" id="msg-text">Processing request...</p>
+            <button onclick="closeMsg()" class="btn-neon btn-green w-full">XÁC NHẬN [OK]</button>
+        </div>
+    </div>
+
+    <script>
+        // Custom message handling function (replaces alert)
+        function showMsg(message) {
+            const msgBox = document.getElementById('msg-box');
+            const msgContent = document.getElementById('msg-content');
+            const msgText = document.getElementById('msg-text');
+            
+            msgText.innerText = "> " + message + " _";
+            
+            msgBox.classList.remove('opacity-0', 'pointer-events-none');
+            msgContent.classList.remove('scale-95');
+            msgContent.classList.add('scale-100');
+        }
+
+        function closeMsg() {
+            const msgBox = document.getElementById('msg-box');
+            const msgContent = document.getElementById('msg-content');
+            
+            msgBox.classList.add('opacity-0', 'pointer-events-none');
+            msgContent.classList.remove('scale-100');
+            msgContent.classList.add('scale-95');
+        }
+        
+        // Add random typing effect to descriptions on hover
+        document.querySelectorAll('.hack-card').forEach(card => {
+            card.addEventListener('mouseenter', () => {
+                const badge = card.querySelector('.badge');
+                badge.style.boxShadow = `0 0 10px ${window.getComputedStyle(badge).color}`;
+            });
+            card.addEventListener('mouseleave', () => {
+                const badge = card.querySelector('.badge');
+                badge.style.boxShadow = 'none';
+            });
+        });
+    </script>
+</body>
+</html>
